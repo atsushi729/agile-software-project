@@ -2,6 +2,7 @@ const express = require("express");
 const application = express();
 const connect = require("./db");
 const Recipe = require("./models/recipe");
+const Article = require("./models/article");
 const cors = require("cors");
 require("dotenv").config(); // Load environment variables
 
