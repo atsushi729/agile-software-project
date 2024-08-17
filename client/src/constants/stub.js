@@ -181,38 +181,48 @@ export const stubRecipe = [
 // prettier-ignore
 export const stubArticle = [
   {
-    title: "The Rise of NoSQL Databases",
+    id: 1,
+    title: "Eco-Friendly Vegan Salad Local",
     date: "2024-08-15",
     author: "Alex Johnson",
-    content: "NoSQL databases have seen a significant rise in popularity due to their flexibility and scalability. Unlike traditional relational databases, NoSQL databases handle unstructured data and scale horizontally, making them ideal for modern applications.",
-    image: "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    content: "This eco-friendly vegan salad is not only delicious but also supports sustainable eating practices. It's packed with fresh vegetables and a zesty dressing, perfect for a light and healthy meal.",
+    image: "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "This is a delicious recipe that is also eco-friendly.",
   },
   {
-    title: "Understanding MongoDB",
+    id: 2,
+    title: "Hearty Vegan Chili",
     date: "2024-08-10",
     author: "Sara Lee",
-    content: "MongoDB is a popular NoSQL database known for its document-oriented storage. It uses JSON-like documents with dynamic schemas, allowing developers to work with data in a more flexible way compared to traditional relational databases.",
-    image: "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    content: "These spicy Thai noodles are a burst of flavor with a perfect balance of heat and tang. Made with rice noodles and a spicy peanut sauce, this dish is sure to excite your taste buds.",
+    image: "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "A spicy and flavorful Thai noodle dish that will tantalize your taste buds.",
   },
   {
-    title: "The Benefits of Document Databases",
+    id: 3,
+    title: "Spicy Thai Noodles",
     date: "2024-08-05",
     author: "Chris Martin",
-    content: "Document databases like MongoDB offer several advantages including ease of use, scalability, and the ability to handle complex data structures. These databases store data in JSON-like documents, which can be nested and have varying structures.",
-    image: "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg"
+    content: "These spicy Thai noodles are a burst of flavor with a perfect balance of heat and tang. Made with rice noodles and a spicy peanut sauce, this dish is sure to excite your taste buds.",
+    image: "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg",
+    description: "A spicy and flavorful Thai noodle dish that will tantalize your taste buds."
   },
   {
-    title: "Getting Started with Mongoose",
+    id: 4,
+    title: "Classic Margherita Pizza",
     date: "2024-08-01",
     author: "Jordan Smith",
-    content: "Mongoose is a powerful library for Node.js that provides a straightforward way to interact with MongoDB. It offers a schema-based solution to model your application data and is known for its flexibility and ease of use.",
-    image: "https://images.pexels.com/photos/2181151/pexels-photo-2181151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    content: "This classic Margherita pizza features a crispy crust topped with rich tomato sauce and fresh mozzarella. Simple, yet delicious, it's a great choice for a homemade pizza night.",
+    image: "https://images.pexels.com/photos/2181151/pexels-photo-2181151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "A classic pizza recipe with a crispy crust and rich tomato sauce."
   },
   {
-    title: "Best Practices for NoSQL Databases",
+    id: 5,
+    title: "Mediterranean Chickpea Salad",
     date: "2024-07-25",
     author: "Taylor Brown",
-    content: "When working with NoSQL databases, it's important to follow best practices to ensure optimal performance and data integrity. This includes understanding the data model, choosing the right database for your needs, and effectively managing schema changes.",
-    image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    content: "This Mediterranean chickpea salad is a fresh and vibrant dish, perfect for a light meal or as a side. It's loaded with chickpeas, cucumbers, tomatoes, and a tangy lemon dressing.",
+    image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "A fresh and vibrant Mediterranean salad that's perfect for a light meal."
   }
 ];
