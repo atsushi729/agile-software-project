@@ -1,43 +1,60 @@
-import React from 'react';
-import './ArticleListPage.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import ArticleCard from '../components/ArticleCard';
-import SearchBar from '../components/SearchBar';
+import React, { useEffect, useState } from "react";
+import "./ArticleListPage.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ArticleCard from "../components/ArticleCard";
+import SearchBar from "../components/SearchBar";
+import { stubArticle } from "../constants/stub";
 
 const ArticleListPage = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
+    // Fetch article data from the API
+    fetch(`${API_ENDPOINT}/articles`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Articles not found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setArticles(data.articles);
+      })
+      .catch((error) => {
+        console.error("Error fetching articles:", error);
+        // Use the stub article data if the API call fails
+        setArticles(stubArticle);
+      });
+  }, []);
+
   return (
     <div className="article-list-page">
       <Header />
       <main>
-      <section className="header-hero">
-      <div className="overlay"></div>
-      <div className="hero-content">
-        <h1>Read eco-friendly article</h1>
-        <p>We will also focus on eco-friendly cooking to help cut down on food waste. 
-        You can generate new recipe using generative AI.</p>
-      </div>
-    </section>
-    <SearchBar></SearchBar>
+        <section className="header-hero">
+          <div className="overlay"></div>
+          <div className="hero-content">
+            <h1>Read eco-friendly article</h1>
+            <p>
+              We will also focus on eco-friendly cooking to help cut down on
+              food waste. You can generate new recipe using generative AI.
+            </p>
+          </div>
+        </section>
+        <SearchBar />
         <div className="article-list">
-            <ArticleCard 
-                image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                title="Article Title 1"
-                description="We will also focus on eco-friendly cooking to help cut down on food waste. You can generate new recipe using generative AI."
-                date="2024/04/20"
+          {articles.map((article, index) => (
+            <ArticleCard
+              key={index}
+              id={article.id}
+              title={article.title}
+              image={article.image}
+              description={article.description}
+              date={article.date}
             />
-            <ArticleCard 
-                image="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                title="Article Title 2"
-                description="Another description for a different article. More content here."
-                date="2024/04/21"
-            />
-            <ArticleCard 
-                image="https://images.pexels.com/photos/940302/pexels-photo-940302.jpeg"
-                title="Article Title 3"
-                description="Another description for a different article. More content here."
-                date="2024/04/22"
-            />
+          ))}
         </div>
       </main>
       <Footer />
