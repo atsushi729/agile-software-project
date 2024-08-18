@@ -1,48 +1,49 @@
 .article-card {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px 0;
-    transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease;
 }
 
 .article-card:hover {
-    transform: scale(1.02);
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .article-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-right: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
 }
 
 .article-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.article-content a{
-    text-decoration: none;
-    color: #FF7C03;
+.article-content h2 {
+  text-decoration: none;
+  color: #ff7c03;
 }
 
 .article-title {
-    font-size: 1.5em;
-    margin: 0 0 10px;
+  font-size: 1.5em;
+  margin: 0 0 10px;
 }
 
 .article-description {
-    font-size: 1em;
-    margin: 0 0 20px;
+  font-size: 1em;
+  margin: 0 0 20px;
 }
 
 .article-date {
-    font-size: 0.9em;
-    color: grey;
-    align-self: flex-end;
+  font-size: 0.9em;
+  color: grey;
+  align-self: flex-start;
 }
