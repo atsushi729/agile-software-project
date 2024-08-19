@@ -1,46 +1,65 @@
 .generate-recipe-hero {
-    position: relative;
-    height: 100vh; /* Full viewport height */
-    background: url('https://images.pexels.com/photos/1059905/pexels-photo-1059905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  
-.generate-recipe-hero-overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  background: url("https://images.pexels.com/photos/1059905/pexels-photo-1059905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+    no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
 }
 
-.generate-recipe-hero-content{
-    z-index: 1;
-    color: #fff;
+.generate-recipe-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.generate-recipe-hero-content h1{
-    font-size: 3em;
-    margin-bottom: 0.5em;
+.generate-recipe-hero-content {
+  z-index: 1;
+  color: #fff;
 }
 
-  .generate-recipe-page form {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+.generate-recipe-hero-content h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+.generate-recipe-page form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.generate-recipe-page input {
+  padding: 10px;
+  margin-right: 10px;
+  width: 70%;
+}
+
+.generate-recipe-page button {
+  padding: 10px 20px;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .generate-recipe-page input {
-    padding: 10px;
-    margin-right: 10px;
-    width: 70%;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .generate-recipe-page button {
-    padding: 10px 20px;
-  }
-  
+}
