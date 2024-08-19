@@ -48,7 +48,7 @@ const ArticleListPage = () => {
           {articles.map((article, index) => (
             <ArticleCard
               key={index}
-              id={article.id}
+              id={article._id}
               title={article.title}
               image={article.image}
               description={article.description}
