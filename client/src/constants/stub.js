@@ -1,7 +1,7 @@
 // prettier-ignore
 export const stubRecipe = [
     {
-      id: 1,
+      _id: 1,
       title: "Baklava",
       author: "John Doe",
       difficulty: "Easy",
@@ -32,7 +32,7 @@ export const stubRecipe = [
       image: "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
-      id: 2,
+      _id: 2,
       title: "Vegan Delight",
       author: "Jane Smith",
       difficulty: "Medium",
@@ -67,7 +67,7 @@ export const stubRecipe = [
       image: "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
-      id: 3,
+      _id: 3,
       title: "Spicy Thai Noodles",
       author: "Alice Johnson",
       difficulty: "Hard",
@@ -104,7 +104,7 @@ export const stubRecipe = [
       image: "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg",
     },
     {
-      id: 4,
+      _id: 4,
       title: "Classic Italian Pizza",
       author: "Mario Rossi",
       difficulty: "Medium",
@@ -141,7 +141,7 @@ export const stubRecipe = [
       image: "https://images.pexels.com/photos/2181151/pexels-photo-2181151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
-      id: 5,
+      _id: 5,
       title: "Mediterranean Salad",
       author: "Sophia Williams",
       difficulty: "Easy",
@@ -181,7 +181,7 @@ export const stubRecipe = [
 // prettier-ignore
 export const stubArticle = [
   {
-    id: 1,
+    _id: 1,
     title: "Eco-Friendly Vegan Salad Local",
     date: "2024-08-15",
     author: "Alex Johnson",
@@ -190,7 +190,7 @@ export const stubArticle = [
     description: "This is a delicious recipe that is also eco-friendly.",
   },
   {
-    id: 2,
+    _id: 2,
     title: "Hearty Vegan Chili",
     date: "2024-08-10",
     author: "Sara Lee",
@@ -199,7 +199,7 @@ export const stubArticle = [
     description: "A spicy and flavorful Thai noodle dish that will tantalize your taste buds.",
   },
   {
-    id: 3,
+    _id: 3,
     title: "Spicy Thai Noodles",
     date: "2024-08-05",
     author: "Chris Martin",
@@ -208,7 +208,7 @@ export const stubArticle = [
     description: "A spicy and flavorful Thai noodle dish that will tantalize your taste buds."
   },
   {
-    id: 4,
+    _id: 4,
     title: "Classic Margherita Pizza",
     date: "2024-08-01",
     author: "Jordan Smith",
@@ -217,7 +217,7 @@ export const stubArticle = [
     description: "A classic pizza recipe with a crispy crust and rich tomato sauce."
   },
   {
-    id: 5,
+    _id: 5,
     title: "Mediterranean Chickpea Salad",
     date: "2024-07-25",
     author: "Taylor Brown",
