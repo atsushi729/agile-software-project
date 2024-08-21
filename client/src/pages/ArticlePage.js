@@ -1,52 +1,76 @@
-import React from 'react';
-import './ArticlePage.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import ArticleCard from '../components/ArticleCard';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Header from "../components/Header";
+import ArticleCard from "../components/ArticleCard";
+import { stubArticle } from "../constants/stub";
+import Footer from "../components/Footer";
+import "./ArticlePage.css";
 
 const ArticlePage = () => {
-    return (
-        <div>
-            <Header />
-            <main className="article-main">
-                <section className="article-hero">
-                    <h1 className="article-page-title">Best Ever Fish and Chips Recipe</h1>
-                    <p className="article-author">By Author Name</p>
-                    <img
-                        src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg"
-                        alt="Fish and Chips"
-                        className="article-page-image"
-                    />
-                </section>
-                <section className="article-page-content">
-                    <p>
-                        When you want your whole family to adopt healthier eating habits without anyone feeling like they're missing out, you can’t go wrong with the Mediterranean diet. It’s based on the way people actually live in the region — and that includes kids.
-                    </p>
-                    <p>
-                        Family-friendly meal planning for the Mediterranean diet lets you include healthy versions of your children's favorites, like chicken tenders, meatballs, and fish sticks, along with abundant fresh fruit and vegetables. And thanks to sophisticated but familiar seasoning with herbs and spices, kid-friendly Mediterranean diet recipes will satisfy the grown-ups, too. Check out this Mediterranean diet meal plan, which features a full week’s worth of dinners your family will love, as well as snacks — and even dessert.
-                    </p>
-                </section>
-                <section className="featured-articles">
-                    <h3>Featured Articles</h3>
-                    <div className="article-grid">
-                        <ArticleCard 
-                            image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                            title="Healthy life recipe" 
-                        />
-                        <ArticleCard 
-                            image="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                            title="Eco friendly recipe"
-                        />
-                        <ArticleCard 
-                            image="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg"
-                            title="Recipe life article"
-                        />
-                    </div>
-                </section>
-            </main>
-            <Footer />
-        </div>
-    );
+  const { id } = useParams(); // Get the article ID from the URL
+  const [article, setArticle] = useState(null);
+  const [articleList, setArticleList] = useState([]);
+
+  useEffect(() => {
+    const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
+    fetch(`${API_ENDPOINT}/articles/`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Article not found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const targetArticle = data.articles.find(
+          (article) => article._id === id
+        );
+        setArticle(targetArticle);
+        setArticleList(data.articles);
+      })
+      .catch((error) => {
+        console.error("Error fetching article:", error);
+        setArticle(stubArticle[id]); // Use stub data in case of error
+        setArticleList(stubArticle);
+      });
+  }, [id]);
+
+  if (!article) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <Header />
+      <main className="article-main">
+        <section className="article-hero">
+          <h1 className="article-page-title">{article.title}</h1>
+          <p className="article-author">By {article.author}</p>
+          <img
+            src={article.image}
+            alt="Aricle hero"
+            className="article-page-image"
+          />
+        </section>
+        <section className="article-page-content">{article.content}</section>
+        <section className="featured-articles">
+          <h3>Featured Articles</h3>
+          <div className="article-grid">
+            {articleList.map((article, index) => (
+              <ArticleCard
+                key={index}
+                id={article._id}
+                title={article.title}
+                image={article.image}
+                description={article.description}
+                date={article.date}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default ArticlePage;
