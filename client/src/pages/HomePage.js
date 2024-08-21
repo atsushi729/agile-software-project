@@ -9,6 +9,11 @@ import { stubRecipe } from "../constants/stub";
 // prettier-ignore
 const HomePage = () => {
     const [recipes, setRecipes] = useState([]);
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
+
+    const handleSearchResults = (results) => {
+      setFilteredRecipes(results);
+    };
 
     useEffect(() => {
         const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
@@ -22,6 +27,7 @@ const HomePage = () => {
                 const data = JSON.parse(text);
                 console.log("Parsed data:", data);
                 setRecipes(data.recipes);
+                setFilteredRecipes(data.recipes);
             } catch (error) {
                 console.error("Error parsing JSON or network issue:", error);
                 setRecipes(stubRecipe); // Use the stub recipe data if the API call fails
@@ -46,12 +52,12 @@ const HomePage = () => {
                         <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg" alt="Delicious food" className="hero-image" />
                     </div>
                 </div>
-                <SearchBar />
+                <SearchBar list={recipes} onSearch={handleSearchResults}/>
             </section>
             <section className="featured-recipes">
                 <h3>Featured Recipes</h3>
                 <div className="recipe-grid">
-                    {recipes.map((recipes, index) => {
+                    {filteredRecipes.map((recipes, index) => {
                         return (
                             recipes.featured &&
                             <RecipeCard
