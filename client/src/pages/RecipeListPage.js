@@ -8,6 +8,11 @@ import { stubRecipe } from "../constants/stub";
 
 const RecipeListPage = () => {
   const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+
+  const handleSearchResults = (results) => {
+    setFilteredRecipes(results);
+  };
 
   useEffect(() => {
     const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
@@ -21,9 +26,11 @@ const RecipeListPage = () => {
         const text = await response.text();
         const data = JSON.parse(text);
         setRecipes(data.recipes);
+        setFilteredRecipes(data.recipes);
       } catch (error) {
         console.error("Error parsing JSON or network issue:", error);
         setRecipes(stubRecipe);
+        setFilteredRecipes(stubRecipe);
       }
     };
     fetchData();
@@ -43,9 +50,9 @@ const RecipeListPage = () => {
             </p>
           </div>
         </section>
-        <SearchBar />
+        <SearchBar list={recipes} onSearch={handleSearchResults} />
         <div className="recipe-list">
-          {recipes.map((recipes, index) => {
+          {filteredRecipes.map((recipes, index) => {
             return (
               <RecipeCard
                 key={index}
