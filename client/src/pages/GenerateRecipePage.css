@@ -45,6 +45,19 @@
   padding: 10px 20px;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: center; /* 横方向に中央配置 */
+  justify-content: center; /* 縦方向に中央配置 */
+  height: 70vh; /* ビューポート全体の高さ */
+}
+
+.loading-text {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
 .spinner {
   border: 8px solid #f3f3f3;
   border-top: 8px solid #3498db;
@@ -62,4 +75,38 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  background-color: #f9f9f9;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.recipe-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.recipe-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.recipe-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
