@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./RecipePage.css";
+import { stubRecipe } from "../constants/stub";
 
 const RecipePage = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
@@ -26,17 +26,14 @@ const RecipePage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        setError(error);
+        console.error(error);
         setLoading(false);
+        setRecipe(stubRecipe[id]); // Use stub data in case of error
       });
   }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
   }
 
   if (!recipe) {
