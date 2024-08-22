@@ -24,7 +24,8 @@ application.post("/generate-recipe", async (request, response) => {
   const { ingredients } = request.body;
 
   const prompt = `
-    Generate a recipe with the following specifications and ingredients in JSON format:
+    Generate a eco friendly recipe with the following specifications and ingredients in JSON format
+    description should be longer than 100 words:
     Ingredients: ${ingredients.join(", ")}
     {
       id: 1,
