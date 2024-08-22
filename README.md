@@ -18,7 +18,8 @@
 4. **Start the Application**: Use the `start` script defined in `package.json` to start the application in development mode.
 
    ```bash
-   npm start
+   cd server && node index.js
+   cd client && npm start
    ```
 
 5. **Open the Application**: Once the application has started, open your web browser and navigate to `http://localhost:3000` (the default port for `react-scripts`).
