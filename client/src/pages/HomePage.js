@@ -31,6 +31,7 @@ const HomePage = () => {
             } catch (error) {
                 console.error("Error parsing JSON or network issue:", error);
                 setRecipes(stubRecipe); // Use the stub recipe data if the API call fails
+                setFilteredRecipes(stubRecipe);
             }
         };
         fetchData();
