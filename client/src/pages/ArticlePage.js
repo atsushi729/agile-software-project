@@ -47,7 +47,7 @@ const ArticlePage = () => {
           <p className="article-author">By {article.author}</p>
           <img
             src={article.image}
-            alt="Aricle hero"
+            alt="Article hero"
             className="article-page-image"
           />
         </section>
@@ -55,7 +55,7 @@ const ArticlePage = () => {
         <section className="featured-articles">
           <h3>Featured Articles</h3>
           <div className="article-grid">
-            {articleList.map((article, index) => (
+            {articleList.slice(0, 3).map((article, index) => (
               <ArticleCard
                 key={index}
                 id={article._id}
