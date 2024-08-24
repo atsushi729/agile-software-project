@@ -1,33 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ArticleListPage.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ArticleCard from "../components/ArticleCard";
 import SearchBar from "../components/SearchBar";
+import useFetch from "../hooks/useFetch";
 import { stubArticle } from "../constants/stub";
 
 const ArticleListPage = () => {
   const [articles, setArticles] = useState([]);
+  const { data: article, isLoading, error } = useFetch("/articles");
 
   useEffect(() => {
-    const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
-    // Fetch article data from the API
-    fetch(`${API_ENDPOINT}/articles`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Articles not found");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setArticles(data.articles);
-      })
-      .catch((error) => {
-        console.error("Error fetching articles:", error);
-        // Use the stub article data if the API call fails
-        setArticles(stubArticle);
-      });
-  }, []);
+    // Success
+    if (article) {
+      setArticles(article.articles);
+    }
+    // Error
+    if (error) {
+      console.error("Error fetching article:", error);
+      setArticles(stubArticle);
+    }
+  }, [article, error]);
 
   return (
     <div className="article-list-page">
@@ -45,16 +39,18 @@ const ArticleListPage = () => {
         </section>
         <SearchBar />
         <div className="article-list">
-          {articles.map((article, index) => (
-            <ArticleCard
-              key={index}
-              id={article._id}
-              title={article.title}
-              image={article.image}
-              description={article.description}
-              date={article.date}
-            />
-          ))}
+          {isLoading && <div>Loading...</div>}
+          {articles &&
+            articles.map((article, index) => (
+              <ArticleCard
+                key={index}
+                id={article._id}
+                title={article.title}
+                image={article.image}
+                description={article.description}
+                date={article.date}
+              />
+            ))}
         </div>
       </main>
       <Footer />
