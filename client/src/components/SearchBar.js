@@ -14,7 +14,7 @@ const SearchBar = ({ list, onSearch }) => {
   return (
     <div>
       <div className="search-container">
-        <button className="filter-button" data-testid="filter-button">
+        <button className="filter-button" data-testid="filter-button" aria-label="Filter options">
           <i className="fas fa-filter"></i>
         </button>
         <input
@@ -25,11 +25,7 @@ const SearchBar = ({ list, onSearch }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button
-          className="search-button"
-          data-testid="search-button"
-          onClick={handleSearch}
-        >
+        <button className="search-button"data-testid="search-button"onClick={handleSearch} aria-label="Search">
           <i className="fas fa-search"></i>
         </button>
       </div>
