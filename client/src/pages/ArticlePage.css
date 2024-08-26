@@ -64,4 +64,12 @@
     gap: 1em;
     padding: 1em;
 }
-
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .article-hero {
+        padding: 0 2em;
+    }
+    .article-page-content {
+        margin: 0 2em 2em 2em;
+    }
+}
