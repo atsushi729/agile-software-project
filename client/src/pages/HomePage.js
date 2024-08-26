@@ -5,37 +5,31 @@ import RecipeCard from "../components/RecipeCard";
 import SearchBar from "../components/SearchBar";
 import "./HomePage.css";
 import { stubRecipe } from "../constants/stub";
+import useFetch from "../hooks/useFetch";
 
 // prettier-ignore
 const HomePage = () => {
     const [recipes, setRecipes] = useState([]);
     const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const { data, isLoading, error } = useFetch("/recipes");
+
+    useEffect(() => {
+        // Success
+        if (data) {
+            setRecipes(data.recipes);
+            setFilteredRecipes(data.recipes);
+        }
+        // Error
+        if (error) {
+            console.error("Error fetching recipes:", error);
+            setRecipes(stubRecipe);
+            setFilteredRecipes(stubRecipe);
+        }
+    }, [data, error]);
 
     const handleSearchResults = (results) => {
       setFilteredRecipes(results);
     };
-
-    useEffect(() => {
-        const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`${API_ENDPOINT}/recipes`);
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                const text = await response.text();
-                const data = JSON.parse(text);
-                console.log("Parsed data:", data);
-                setRecipes(data.recipes);
-                setFilteredRecipes(data.recipes);
-            } catch (error) {
-                console.error("Error parsing JSON or network issue:", error);
-                setRecipes(stubRecipe); // Use the stub recipe data if the API call fails
-                setFilteredRecipes(stubRecipe);
-            }
-        };
-        fetchData();
-    }, []);
 
   return (  
     <>
@@ -58,6 +52,7 @@ const HomePage = () => {
             <section className="featured-recipes">
                 <h3>Featured Recipes</h3>
                 <div className="recipe-grid">
+                    {isLoading && <p>Loading...</p>}
                     {filteredRecipes.map((recipes, index) => {
                         return (
                             recipes.featured &&
