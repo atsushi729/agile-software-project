@@ -1,96 +1,109 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import App from '../App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+import HomePage from "../pages/HomePage";
+import RecipeListPage from "../pages/RecipeListPage";
+import GenerateRecipePage from "../pages/GenerateRecipePage";
+import ArticlePage from "../pages/ArticlePage";
+import RecipePage from "../pages/RecipePage";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import ArticleListPage from "../pages/ArticleListPage";
 
-// Mocking the pages that are already tested individually
-jest.mock('../pages/HomePage', () => () => <div data-testid="home-page">HomePage Component</div>);
-jest.mock('../pages/RecipeListPage', () => () => <div data-testid="recipe-list-page">RecipeListPage Component</div>);
-jest.mock('../pages/GenerateRecipePage', () => () => <div data-testid="generate-recipe-page">GenerateRecipePage Component</div>);
-jest.mock('../pages/ArticlePage', () => () => <div data-testid="article-page">ArticlePage Component</div>);
-jest.mock('../pages/RecipePage', () => () => <div data-testid="recipe-page">RecipePage Component</div>);
-jest.mock('../pages/About', () => () => <div data-testid="about-page">About Page Component</div>);
-jest.mock('../pages/Contact', () => () => <div data-testid="contact-page">Contact Page Component</div>);
-jest.mock('../pages/ArticleListPage', () => () => <div data-testid="article-list-page">ArticleListPage Component</div>);
-
-describe('App Component', () => {
-  test('renders HomePage component on default route', () => {
+describe("App Component", () => {
+  test("renders HomePage component for default route", () => {
     render(
-      <MemoryRouter initialEntries={['/']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('home-page')).toBeInTheDocument();
+    expect(screen.getByText(/Create eco-friendly Recipes/i)).toBeInTheDocument();
   });
 
-  test('renders RecipeListPage component on /recipes route', () => {
+  test("renders RecipeListPage component for /recipes route", () => {
     render(
-      <MemoryRouter initialEntries={['/recipes']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/recipes"]}>
+        <Routes>
+          <Route path="/recipes" element={<RecipeListPage />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('recipe-list-page')).toBeInTheDocument();
+    expect(screen.getByText(/Featured Recipes/i)).toBeInTheDocument();
   });
 
-  test('renders GenerateRecipePage component on /create-recipe route', () => {
+  test("renders GenerateRecipePage component for /create-recipe route", () => {
     render(
-      <MemoryRouter initialEntries={['/create-recipe']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/create-recipe"]}>
+        <Routes>
+          <Route path="/create-recipe" element={<GenerateRecipePage />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('generate-recipe-page')).toBeInTheDocument();
+    expect(screen.getByText(/Generate a new recipe/i)).toBeInTheDocument();
   });
 
-  test('renders ArticlePage component on /article-page route', () => {
+  test("renders ArticlePage component for /article/:id route", () => {
     render(
-      <MemoryRouter initialEntries={['/article-page']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/article/1"]}>
+        <Routes>
+          <Route path="/article/:id" element={<ArticlePage />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('article-page')).toBeInTheDocument();
+    expect(screen.getByText(/Article Details/i)).toBeInTheDocument();
   });
 
-  test('renders RecipePage component on /recipe-page route', () => {
+  test("renders RecipePage component for /recipe/:id route", () => {
     render(
-      <MemoryRouter initialEntries={['/recipe-page']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/recipe/1"]}>
+        <Routes>
+          <Route path="/recipe/:id" element={<RecipePage />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('recipe-page')).toBeInTheDocument();
+    expect(screen.getByText(/Recipe Details/i)).toBeInTheDocument();
   });
 
-  test('renders About component on /about route', () => {
+  test("renders About component for /about route", () => {
     render(
-      <MemoryRouter initialEntries={['/about']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/about"]}>
+        <Routes>
+          <Route path="/about" element={<About />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('about-page')).toBeInTheDocument();
+    expect(screen.getByText(/About Us/i)).toBeInTheDocument();
   });
 
-  test('renders Contact component on /contact route', () => {
+  test("renders Contact component for /contact route", () => {
     render(
-      <MemoryRouter initialEntries={['/contact']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/contact"]}>
+        <Routes>
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('contact-page')).toBeInTheDocument();
+    expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
   });
 
-  test('renders ArticleListPage component on /articles route', () => {
+  test("renders ArticleListPage component for /articles route", () => {
     render(
-      <MemoryRouter initialEntries={['/articles']}>
-        <App useRouter={false} />
+      <MemoryRouter initialEntries={["/articles"]}>
+        <Routes>
+          <Route path="/articles" element={<ArticleListPage />} />
+        </Routes>
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('article-list-page')).toBeInTheDocument();
+    expect(screen.getByText(/Read eco-friendly article/i)).toBeInTheDocument();
   });
 });

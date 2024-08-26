@@ -14,13 +14,21 @@ header {
     text-decoration: none;
 }
 
-.header-logo h1{
+.header-logo h1 {
     transition: transform 0.3s ease;
 }
-.header-logo h1:hover{
+
+.header-logo h1:hover {
     transform: scale(1.1);
 }
 
+/* Default nav links style */
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Hide the navigation items by default */
 header nav a {
     color: rgb(0, 0, 0);
     text-decoration: none;
@@ -29,7 +37,44 @@ header nav a {
     transition: border 0.1s ease;
 }
 
-  header nav a:hover {
-    border: 2px solid #FF7C03; 
-  }
-  
+/* Tablet and Mobile Styles */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    background: none;
+    color: #FF7C03;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hide nav on smaller screens */
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #fff;
+        width: 200px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header nav.nav-open {
+        display: flex;
+    }
+
+    header nav a {
+        margin: 10px 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .header-logo h1 {
+        font-size: 24px; /* Adjust size for mobile */
+    }
+}
