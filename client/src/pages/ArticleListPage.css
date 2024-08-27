@@ -41,4 +41,9 @@
   .article-list-page .article-list {
     padding: 1em 6em;
   }
- 
+ /* Mobile devices (up to 768px) */
+@media (max-width: 768px) {
+  .article-list-page .article-list {
+    padding: 1em 1em;
+  }
+}
