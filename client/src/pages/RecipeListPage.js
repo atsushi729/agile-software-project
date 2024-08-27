@@ -5,36 +5,30 @@ import Footer from "../components/Footer";
 import RecipeCard from "../components/RecipeCard";
 import SearchBar from "../components/SearchBar";
 import { stubRecipe } from "../constants/stub";
+import useFetch from "../hooks/useFetch";
 
 const RecipeListPage = () => {
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const { data, isLoading, error } = useFetch("/recipes");
+
+  useEffect(() => {
+    // Success
+    if (data) {
+      setRecipes(data.recipes);
+      setFilteredRecipes(data.recipes);
+    }
+    // Error
+    if (error) {
+      console.error("Error fetching recipes:", error);
+      setRecipes(stubRecipe);
+      setFilteredRecipes(stubRecipe);
+    }
+  }, [data, error]);
 
   const handleSearchResults = (results) => {
     setFilteredRecipes(results);
   };
-
-  useEffect(() => {
-    const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${API_ENDPOINT}/recipes`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const text = await response.text();
-        const data = JSON.parse(text);
-        setRecipes(data.recipes);
-        setFilteredRecipes(data.recipes);
-      } catch (error) {
-        console.error("Error parsing JSON or network issue:", error);
-        setRecipes(stubRecipe);
-        setFilteredRecipes(stubRecipe);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <div className="recipe-list-page">
@@ -52,6 +46,7 @@ const RecipeListPage = () => {
         </section>
         <SearchBar list={recipes} onSearch={handleSearchResults} />
         <div className="recipe-list">
+          {isLoading && <p>Loading...</p>}
           {filteredRecipes.map((recipes, index) => {
             return (
               <RecipeCard

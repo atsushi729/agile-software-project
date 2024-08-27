@@ -9,19 +9,26 @@ import { stubArticle } from "../constants/stub";
 
 const ArticleListPage = () => {
   const [articles, setArticles] = useState([]);
-  const { data: article, isLoading, error } = useFetch("/articles");
+  const [filteredArticles, setFilteredArticles] = useState([]);
+  const { data, isLoading, error } = useFetch("/articles");
 
   useEffect(() => {
     // Success
-    if (article) {
-      setArticles(article.articles);
+    if (data) {
+      setArticles(data.articles);
+      setFilteredArticles(data.articles);
     }
     // Error
     if (error) {
       console.error("Error fetching article:", error);
       setArticles(stubArticle);
+      setFilteredArticles(stubArticle);
     }
-  }, [article, error]);
+  }, [data, error]);
+
+  const handleSearchResults = (results) => {
+    setFilteredArticles(results);
+  };
 
   return (
     <div className="article-list-page">
@@ -37,11 +44,11 @@ const ArticleListPage = () => {
             </p>
           </div>
         </section>
-        <SearchBar />
+        <SearchBar list={articles} onSearch={handleSearchResults} />
         <div className="article-list">
           {isLoading && <div>Loading...</div>}
-          {articles &&
-            articles.map((article, index) => (
+          {filteredArticles &&
+            filteredArticles.map((article, index) => (
               <ArticleCard
                 key={index}
                 id={article._id}
