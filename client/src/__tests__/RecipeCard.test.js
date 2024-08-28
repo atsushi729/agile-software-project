@@ -1,58 +1,67 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import RecipeCard from '../components/RecipeCard';
 
-// Mock useNavigate directly
+// Mock useNavigate from react-router-dom
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => jest.fn(),
+  useNavigate: jest.fn(),
 }));
 
 describe('RecipeCard Component', () => {
   const mockNavigate = jest.fn();
 
-  // Manually override the useNavigate mock to return the mockNavigate function
   beforeEach(() => {
     jest.clearAllMocks();
+    // Set up the mock return value for useNavigate
     require('react-router-dom').useNavigate.mockReturnValue(mockNavigate);
   });
 
   const props = {
     id: '1',
-    title: 'Test Recipe',
     image: 'test-image.jpg',
+    title: 'Test Recipe',
     time: 30,
     difficulty: 'Medium',
   };
 
   test('renders RecipeCard component correctly', () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <RecipeCard {...props} />
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
-    const titleElement = screen.getByText(props.title);
+    // Check if the image is rendered with the correct src and alt attributes
     const imageElement = screen.getByAltText(props.title);
-    const timeElement = screen.getByText(/Time: 30 minutes/i);
-    const difficultyElement = screen.getByText(/Difficulty: Medium/i);
-
-    expect(titleElement).toBeInTheDocument();
     expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAttribute('src', props.image);
+
+    // Check if the title is rendered correctly
+    const titleElement = screen.getByText(props.title);
+    expect(titleElement).toBeInTheDocument();
+
+    // Check if the time is rendered correctly
+    const timeElement = screen.getByText(/Time: 30 minutes/i);
     expect(timeElement).toBeInTheDocument();
+
+    // Check if the difficulty is rendered correctly
+    const difficultyElement = screen.getByText(/Difficulty: Medium/i);
     expect(difficultyElement).toBeInTheDocument();
   });
 
   test('navigates to the correct recipe page on click', () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <RecipeCard {...props} />
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
-    const cardElement = screen.getByRole('img', { name: props.title }).closest('div');
+    // Simulate click on the recipe card
+    const cardElement = screen.getByAltText(props.title).closest('div');
     fireEvent.click(cardElement);
 
+    // Check if navigate function is called with the correct URL
     expect(mockNavigate).toHaveBeenCalledWith(`/recipe/${props.id}`);
   });
 });
