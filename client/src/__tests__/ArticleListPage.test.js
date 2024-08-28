@@ -34,9 +34,9 @@ describe('ArticleListPage Component', () => {
     // // Check that the SearchBar is rendered
     expect(screen.getByTestId('search-bar')).toBeInTheDocument();
 
-    // Wait for the single article card to be rendered with the hardcoded ID
+    // Wait for at least 1 article card to be rendered
     await waitFor(() => {
-      const articleCard = screen.getByTestId('article-card-1'); // Checking for hardcoded ID '1'
+      const articleCard = screen.getByTestId('article-card-1'); 
       expect(articleCard).toBeInTheDocument();
     });
   });
