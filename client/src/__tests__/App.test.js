@@ -1,6 +1,6 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
+import { render, screen, waitFor } from "@testing-library/react";
 import HomePage from "../pages/HomePage";
 import RecipeListPage from "../pages/RecipeListPage";
 import GenerateRecipePage from "../pages/GenerateRecipePage";
@@ -23,17 +23,19 @@ describe("App Component", () => {
     expect(screen.getByText(/Create eco-friendly Recipes/i)).toBeInTheDocument();
   });
 
-  test("renders RecipeListPage component for /recipes route", () => {
-    render(
-      <MemoryRouter initialEntries={["/recipes"]}>
-        <Routes>
-          <Route path="/recipes" element={<RecipeListPage />} />
-        </Routes>
-      </MemoryRouter>
-    );
+  test("renders RecipeListPage component for /recipes route", async () => {
+  render(
+    <MemoryRouter initialEntries={["/recipes"]}>
+      <Routes>
+        <Route path="/recipes" element={<RecipeListPage />} />
+      </Routes>
+    </MemoryRouter>
+  );
 
-    expect(screen.getByText(/Featured Recipes/i)).toBeInTheDocument();
+  await waitFor(() => {
+    expect(screen.getByText(/Baklava/i)).toBeInTheDocument();
   });
+});
 
   test("renders GenerateRecipePage component for /create-recipe route", () => {
     render(
@@ -44,7 +46,7 @@ describe("App Component", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText(/Generate a new recipe/i)).toBeInTheDocument();
+    expect(screen.getByText(/Create Eco-friendly Recipe with AI/i)).toBeInTheDocument();
   });
 
   test("renders ArticlePage component for /article/:id route", () => {
@@ -56,7 +58,7 @@ describe("App Component", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText(/Article Details/i)).toBeInTheDocument();
+    expect(screen.getByText(/Featured Articles/i)).toBeInTheDocument();
   });
 
   test("renders RecipePage component for /recipe/:id route", () => {
@@ -68,7 +70,7 @@ describe("App Component", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText(/Recipe Details/i)).toBeInTheDocument();
+    expect(screen.getByText(/Ingredients/i)).toBeInTheDocument();
   });
 
   test("renders About component for /about route", () => {

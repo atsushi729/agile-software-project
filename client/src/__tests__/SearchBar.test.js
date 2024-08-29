@@ -3,8 +3,15 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import SearchBar from '../components/SearchBar';
 
 describe('SearchBar Component', () => {
+  const mockList = [
+    { title: 'Test Recipe 1' },
+    { title: 'Another Recipe' },
+  ];
+
+  const mockOnSearch = jest.fn();
+
   test('renders SearchBar component correctly', () => {
-    render(<SearchBar />);
+    render(<SearchBar list={mockList} onSearch={mockOnSearch} />);
 
     // Check if the filter button is rendered correctly
     const filterButton = screen.getByTestId('filter-button');
@@ -20,7 +27,7 @@ describe('SearchBar Component', () => {
   });
 
   test('search input accepts text', () => {
-    render(<SearchBar />);
+    render(<SearchBar list={mockList} onSearch={mockOnSearch} />);
 
     const searchInput = screen.getByTestId('search-input');
     fireEvent.change(searchInput, { target: { value: 'test search' } });
@@ -29,20 +36,20 @@ describe('SearchBar Component', () => {
   });
 
   test('filter button is clickable', () => {
-    render(<SearchBar />);
+    render(<SearchBar list={mockList} onSearch={mockOnSearch} />);
 
     const filterButton = screen.getByTestId('filter-button');
     fireEvent.click(filterButton);
 
-    expect(filterButton).toBeInTheDocument(); // This is just to verify the button is clickable; you can add more logic if needed
+    expect(filterButton).toBeInTheDocument();
   });
 
   test('search button is clickable', () => {
-    render(<SearchBar />);
+    render(<SearchBar list={mockList} onSearch={mockOnSearch} />);
 
     const searchButton = screen.getByTestId('search-button');
     fireEvent.click(searchButton);
 
-    expect(searchButton).toBeInTheDocument(); // This is just to verify the button is clickable; you can add more logic if needed
+    expect(mockOnSearch).toHaveBeenCalled();  // Check if the onSearch function was called
   });
 });
