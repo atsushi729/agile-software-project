@@ -5,13 +5,18 @@ const Recipe = require("./models/recipe");
 const Article = require("./models/article");
 const cors = require("cors");
 const { OpenAI } = require("openai");
-const recipePrompt = require('./constants/prompt');
-require("dotenv").config(); // Load environment variables
+const recipePrompt = require("./constants/prompt");
+
+//----------------------------------------------------
+//                  SERVER SETUP
+//----------------------------------------------------
+// Load environment variables
+require("dotenv").config();
 
 // Connect to the database
 connect();
 
-// Middleware
+// Middleware to parse JSON data
 application.use(express.json());
 application.use(cors());
 
@@ -20,22 +25,28 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// Start server
+const PORT = process.env.PORT || 3000;
+application.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+//----------------------------------------------------
+//                      ROUTES
+//----------------------------------------------------
 // Route to generate a recipe
 application.post("/generate-recipe", async (request, response) => {
   const { ingredients } = request.body;
   const prompt = recipePrompt(ingredients);
-
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 2048,
-      temperature: 0.7,
+      max_tokens: 2048, // Max tokens for GPT-4
+      temperature: 0.7, // Medium randomness
     });
-
     // Assuming the completion contains JSON data as a string
     const recipe = JSON.parse(completion.choices[0].message.content);
-
     console.log("Generated recipe:", recipe);
     return response.json({ recipe });
   } catch (error) {
@@ -44,7 +55,7 @@ application.post("/generate-recipe", async (request, response) => {
   }
 });
 
-// Routes
+// Route to get all recipes
 application.get("/recipes", async (request, response) => {
   try {
     const recipes = await Recipe.find({});
@@ -70,6 +81,7 @@ application.get("/recipe/:id", async (request, response) => {
   }
 });
 
+// Route to get all articles
 application.get("/articles", async (request, response) => {
   try {
     const articles = await Article.find({});
@@ -80,6 +92,7 @@ application.get("/articles", async (request, response) => {
   }
 });
 
+// Route to get an article by ID
 application.get("/article/:id", async (request, response) => {
   const { id } = request.params;
   try {
@@ -92,10 +105,4 @@ application.get("/article/:id", async (request, response) => {
     console.error("Error fetching article:", error);
     return response.status(500).json({ error: "Internal Server Error" });
   }
-});
-
-// Start server
-const PORT = process.env.PORT || 3000;
-application.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
 });
