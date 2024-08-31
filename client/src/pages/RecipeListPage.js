@@ -10,6 +10,7 @@ import useFetch from "../hooks/useFetch";
 const RecipeListPage = () => {
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
+  // fetch recipe data
   const { data, isLoading, error } = useFetch("/recipes");
 
   useEffect(() => {

@@ -9,6 +9,7 @@ import useFetch from "../hooks/useFetch";
 const RecipePage = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState({});
+  // fetch recipe data
   const { data: recipeData, isLoading, error } = useFetch(`/recipe/${id}`);
 
   useEffect(() => {

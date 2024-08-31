@@ -10,6 +10,7 @@ import { stubArticle } from "../constants/stub";
 const ArticleListPage = () => {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
+  // fetch article data
   const { data, isLoading, error } = useFetch("/articles");
 
   useEffect(() => {

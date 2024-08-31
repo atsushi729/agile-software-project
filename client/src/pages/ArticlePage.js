@@ -8,10 +8,10 @@ import "./ArticlePage.css";
 import useFetch from "../hooks/useFetch";
 
 const ArticlePage = () => {
-  const { id } = useParams(); // Get the article ID from the URL
+  const { id } = useParams();
   const [article, setArticle] = useState(null);
   const [articleList, setArticleList] = useState([]);
-
+  // fetch article data
   const { data: articleData, isLoading, error } = useFetch("/articles");
 
   // prettier-ignore
