@@ -8,26 +8,34 @@ const useFetch = (url) => {
   // prettier-ignore
   useEffect(() => {
     const BASE_API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:3000";
+    const controller = new AbortController();
+    const signal = controller.signal;
 
-    console.log(`Fetching data from ${BASE_API_ENDPOINT}${url}`);
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
 
-    fetch(`${BASE_API_ENDPOINT}${url}`)
-      .then((response) => {
+      try {
+        const response = await fetch(`${BASE_API_ENDPOINT}${url}`, { signal });
         if (!response.ok) {
-          // error coming back from server
-          throw Error("could not fetch the data for that resource");
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
-        return response.json();
-      })
-      .then((data) => {
-        setIsLoading(false);
+        const data = await response.json();
         setData(data);
-        setError(null);
-      })
-      .catch((err) => {
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+        }
+      } finally {
         setIsLoading(false);
-        setError(err.message);
-      });
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      controller.abort();
+    };
   }, [url]);
 
   return { data, isLoading, error };
