@@ -31,12 +31,12 @@ const ArticlePage = () => {
 
   return (
     <div>
+      <Header />
       <main className="article-main">
         {isLoading && <div>Loading...</div>}
         {article && (
           <>
             <section className="article-hero">
-              <Header />
               <h1 className="article-page-title">{article.title}</h1>
               <p className="article-author">By {article.author}</p>
               <img
