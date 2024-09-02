@@ -13,12 +13,14 @@ describe('Footer Component', () => {
     );
   };
 
+  // Check if the footer logo is rendered correctly
   test('renders the footer logo correctly', () => {
     renderWithRouter(<Footer />);
     const logoElement = screen.getByText(/Chef AI/i);
     expect(logoElement).toBeInTheDocument();
   });
 
+  // Check if the footer links (Home, About, Contact) are rendered correctly
   test('renders the footer links correctly', () => {
     renderWithRouter(<Footer />);
     const homeLink = screen.getByText(/Home/i);
@@ -33,6 +35,7 @@ describe('Footer Component', () => {
     expect(contactLink.closest('a')).toHaveAttribute('href', '/contact');
   });
 
+  // Check if the social media links (Facebook, Twitter, Instagram) are rendered correctly
   test('renders the social media links correctly', () => {
     renderWithRouter(<Footer />);
     const facebookLink = screen.getByLabelText('Facebook');

@@ -50,6 +50,7 @@ describe('SearchBar Component', () => {
     const searchButton = screen.getByTestId('search-button');
     fireEvent.click(searchButton);
 
-    expect(mockOnSearch).toHaveBeenCalled();  // Check if the onSearch function was called
+    // Check if the onSearch function was called
+    expect(mockOnSearch).toHaveBeenCalled();  
   });
 });

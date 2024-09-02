@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import About from "../pages/About";
 
+// Mocking the components used in the About page
 jest.mock("../components/Header", () => () => <div>Header</div>);
 jest.mock("../components/Footer", () => () => <div>Footer</div>);
 
@@ -12,6 +13,7 @@ describe("About component", () => {
   });
 
   test("renders the About section with correct content", () => {
+    //check that page content are rendered correctly
     expect(screen.getByText("About Us")).toBeInTheDocument();
     expect(
       screen.getByText(

@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RecipeListPage from '../pages/RecipeListPage';
 
-// Mocking the components used in RecipeListPage
+// Mocking the components that are already tested individually
 jest.mock('../components/Header', () => () => <div data-testid="header">Header Component</div>);
 jest.mock('../components/Footer', () => () => <div data-testid="footer">Footer Component</div>);
 jest.mock('../components/RecipeCard', () => ({ title, image, time, difficulty }) => (

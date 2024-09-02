@@ -83,8 +83,8 @@
 @media (max-width: 768px) {
     .hero-text-container {
         width: 100%;
-        text-align: center; /* Center text content */
-        align-items: center; /* Center elements horizontally */
+        text-align: center; 
+        align-items: center; 
     }
 
     .hero-text-container button {

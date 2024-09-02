@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import ArticleListPage from '../pages/ArticleListPage';
 import '@testing-library/jest-dom/extend-expect';
 
-// Mocking components
+// Mocking the components that are already tested individually
 jest.mock('../components/Header', () => () => <div data-testid="header">Header Component</div>);
 jest.mock('../components/Footer', () => () => <div data-testid="footer">Footer Component</div>);
 jest.mock('../components/SearchBar', () => () => <div data-testid="search-bar">SearchBar Component</div>);
