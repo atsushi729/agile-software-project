@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import HomePage from '../pages/HomePage';
 
-// Mock the components used in HomePage to simplify testing
+// Mocking the components that are already tested individually
 jest.mock('../components/Header', () => () => <div data-testid="header">Header Component</div>);
 jest.mock('../components/Footer', () => () => <div data-testid="footer">Footer Component</div>);
 jest.mock('../components/RecipeCard', () => () => <div data-testid="recipe-card" />);
@@ -25,7 +25,7 @@ describe('HomePage Component', () => {
     // Check if Footer is rendered
     expect(screen.getByTestId('footer')).toBeInTheDocument();
 
-    // Optionally check for the presence of the hero section
+    //Check for the presence of the hero section
     expect(screen.getByText(/Create eco-friendly Recipes/i)).toBeInTheDocument();
   });
 });

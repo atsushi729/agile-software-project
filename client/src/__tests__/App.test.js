@@ -11,18 +11,21 @@ import Contact from "../pages/Contact";
 import ArticleListPage from "../pages/ArticleListPage";
 
 describe("App Component", () => {
+   // Test to see if HomePage renders correctly for the default route "/"
   test("renders HomePage component for default route", () => {
-    render(
+    render( 
+      // Simulate routing using memory router
       <MemoryRouter initialEntries={["/"]}>
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
       </MemoryRouter>
     );
-
+    // Check if the text is present in the document
     expect(screen.getByText(/Create eco-friendly Recipes/i)).toBeInTheDocument();
   });
 
+   //Check if RecipeListPage renders correctly for the "/recipes" route
   test("renders RecipeListPage component for /recipes route", async () => {
   render(
     <MemoryRouter initialEntries={["/recipes"]}>
@@ -33,10 +36,12 @@ describe("App Component", () => {
   );
 
   await waitFor(() => {
+    // Wait for the text "Baklava" to appear in the document
     expect(screen.getByText(/Baklava/i)).toBeInTheDocument();
   });
 });
-
+  
+// Check if GenerateRecipePage renders correctly for the "/create-recipe" route
   test("renders GenerateRecipePage component for /create-recipe route", () => {
     render(
       <MemoryRouter initialEntries={["/create-recipe"]}>
@@ -49,6 +54,7 @@ describe("App Component", () => {
     expect(screen.getByText(/Create Eco-friendly Recipe with AI/i)).toBeInTheDocument();
   });
 
+  // Check if ArticlePage renders correctly for the "/article/:id" route
   test("renders ArticlePage component for /article/:id route", () => {
     render(
       <MemoryRouter initialEntries={["/article/1"]}>
@@ -61,6 +67,7 @@ describe("App Component", () => {
     expect(screen.getByText(/Featured Articles/i)).toBeInTheDocument();
   });
 
+  // Check if RecipePage renders correctly for the "/recipe/:id" route
   test("renders RecipePage component for /recipe/:id route", () => {
     render(
       <MemoryRouter initialEntries={["/recipe/1"]}>
@@ -73,6 +80,7 @@ describe("App Component", () => {
     expect(screen.getByText(/Ingredients/i)).toBeInTheDocument();
   });
 
+  // Check if About page renders correctly for the "/about" route
   test("renders About component for /about route", () => {
     render(
       <MemoryRouter initialEntries={["/about"]}>
@@ -85,6 +93,7 @@ describe("App Component", () => {
     expect(screen.getByText(/About Us/i)).toBeInTheDocument();
   });
 
+  // Check if Contact page renders correctly for the "/contact" route
   test("renders Contact component for /contact route", () => {
     render(
       <MemoryRouter initialEntries={["/contact"]}>
@@ -97,6 +106,7 @@ describe("App Component", () => {
     expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
   });
 
+  // Check if ArticleListPage renders correctly for the "/articles" route
   test("renders ArticleListPage component for /articles route", () => {
     render(
       <MemoryRouter initialEntries={["/articles"]}>
