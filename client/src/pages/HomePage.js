@@ -6,6 +6,7 @@ import SearchBar from "../components/SearchBar";
 import "./HomePage.css";
 import { stubRecipe } from "../constants/stub";
 import useFetch from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 // prettier-ignore
 const HomePage = () => {
@@ -42,7 +43,9 @@ const HomePage = () => {
                         <h2>Create eco-friendly Recipes</h2>
                         <p>We will also focus on eco-friendly cooking to help cut down on food waste. </p>
                         <p>You can generate new recipe using generative AI.</p>
-                        <button ><a href='/create-recipe'>Get Started</a></button>
+                        <button>
+                            <Link to='/create-recipe'>Get Started</Link>
+                        </button>
                     </div>
                     <div className='hero-image-container'>
                         <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg" alt="Delicious food" className="hero-image" />
