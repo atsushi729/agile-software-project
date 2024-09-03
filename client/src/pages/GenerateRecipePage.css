@@ -48,10 +48,10 @@
 
 .loading-container {
   display: flex;
-  flex-direction: column; /* 縦に並べる */
-  align-items: center; /* 横方向に中央配置 */
-  justify-content: center; /* 縦方向に中央配置 */
-  height: 70vh; /* ビューポート全体の高さ */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
 }
 
 .loading-text {
