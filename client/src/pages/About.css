@@ -1,22 +1,21 @@
 .about-main {
-    padding: 2em;
-    height: 65vh;
-  }
-  
-  .about-section {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .about-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-  }
-  
-  .about-section p {
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    line-height: 1.6;
-  }
-  
+  padding: 2em;
+  height: 65vh;
+}
+
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.about-section p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  line-height: 1.6;
+}

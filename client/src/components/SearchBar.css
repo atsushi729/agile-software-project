@@ -1,65 +1,65 @@
 .search-container {
   text-align: center;
   margin: 6em 0 3em;
-  }
-  
-  .search-input {
-    margin-right: 1em;
-    padding: 1em;
-    width: 50%;
-    max-width: 500px;
-    text-align: center;
-    border: none;
-    outline: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .search-input:focus {
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
-  
-  .search-button {
-    background-color: #FF7C03;
-    color: #fff;
-    border: none;
-    padding: 1em 2em;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .search-button i {
-    color: #ffffff; /* Icon color */
-  }
-  
-  .search-button i:hover {
-    transform: scale(1.05);
-  }
-  
-  .filter-button {
-    background-color: #fff;
-    color: #fff;
-    border: 1px solid #ff9900;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .filter-button i {
-    color: #ff9900; 
-    font-size: 1em;
-  }
-  
-  .filter-button i:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Responsive Styles */
+
+.search-input {
+  margin-right: 1em;
+  padding: 1em;
+  width: 50%;
+  max-width: 500px;
+  text-align: center;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-button {
+  background-color: #ff7c03;
+  color: #fff;
+  border: none;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.search-button i {
+  color: #ffffff; /* Icon color */
+}
+
+.search-button i:hover {
+  transform: scale(1.05);
+}
+
+.filter-button {
+  background-color: #fff;
+  color: #fff;
+  border: 1px solid #ff9900;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.filter-button i {
+  color: #ff9900;
+  font-size: 1em;
+}
+
+.filter-button i:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Styles */
 
 /* Small screens (Mobile) */
 @media (max-width: 480px) {
   .search-input {
-   max-width: 300px;
+    max-width: 300px;
     padding: 0.75em;
   }
 

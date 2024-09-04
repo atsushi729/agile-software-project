@@ -1,6 +1,6 @@
 .footer {
   background-color: #f3f3f3;
-  color: #FF7C03;
+  color: #ff7c03;
   text-align: center;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px 0;
@@ -13,25 +13,28 @@
   padding: 0 50px;
 }
 
-.footer-links, .footer-social {
+.footer-links,
+.footer-social {
   display: flex;
   gap: 15px;
 }
 
-.footer-links a, .footer-social a {
+.footer-links a,
+.footer-social a {
   color: #000000;
   text-decoration: none;
   padding: 5px;
   transition: border 0.1s ease;
 }
 
-.footer-links a:hover, .footer-social a:hover {
-  border: 2px solid #FF7C03;
+.footer-links a:hover,
+.footer-social a:hover {
+  border: 2px solid #ff7c03;
 }
 
 .footer-logo {
   margin: 0;
-  color: #FF7C03;
+  color: #ff7c03;
   text-decoration: none;
 }
 
@@ -46,22 +49,23 @@
 /* Mobile Styles */
 @media (max-width: 570px) {
   .footer-content {
-      flex-direction: column;
-      text-align: center;
-      padding: 0 20px;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
   }
 
-  .footer-links, .footer-social {
-      flex-direction: column;
-      gap: 10px;
-      margin: 10px 0;
+  .footer-links,
+  .footer-social {
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
   }
 
   .footer-logo {
-      margin-bottom: 15px;
+    margin-bottom: 15px;
   }
 
   .footer-logo h1 {
-      font-size: 24px; /* Adjust logo size for mobile */
+    font-size: 24px; /* Adjust logo size for mobile */
   }
 }

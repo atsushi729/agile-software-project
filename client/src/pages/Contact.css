@@ -1,64 +1,63 @@
 .contact-main {
-    padding: 2em;
-  }
-  
-  .contact-section {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .contact-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-  }
-  
-  .contact-section p {
-    font-size: 1.2em;
-    margin-bottom: 1.5em;
-    line-height: 1.6;
-  }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .form-group {
-    margin-bottom: 1em;
-    width: 100%;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.5em;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-group textarea {
-    height: 150px;
-  }
-  
-  button {
-    background-color: #FF7C03;
-    color: #fff;
-    border: none;
-    padding: 1em 2em;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  button:hover {
-    transform: scale(1.05);
-  }
-  
+  padding: 2em;
+}
+
+.contact-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.contact-section p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  height: 150px;
+}
+
+button {
+  background-color: #ff7c03;
+  color: #fff;
+  border: none;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}

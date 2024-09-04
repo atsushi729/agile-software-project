@@ -1,47 +1,47 @@
 .recipe-list-page main {
-    padding: 1em;
-  }
+  padding: 1em;
+}
 
-  .header-hero {
-    position: relative;
-    height: 100vh; 
-    background: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); 
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1; 
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .hero-content h1 {
-    font-size: 3em;
-    margin-bottom: 0.5em;
-  }
-  
-  .hero-content p {
-    font-size: 1.5em;
-    margin-top: 0;
-  }
-  .recipe-list-page .recipe-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1em;
-    padding: 1em;
-  }
- 
+.header-hero {
+  position: relative;
+  height: 100vh;
+  background: url("https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+.hero-content p {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.recipe-list-page .recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+  padding: 1em;
+}
