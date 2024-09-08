@@ -22,7 +22,7 @@
    cd client && npm start
    ```
 
-5. **Open the Application**: Once the application has started, open your web browser and navigate to `http://localhost:3000` (the default port for `react-scripts`).
+5. **Open the Application**: Once the application has started, open your web browser and navigate to `http://localhost:3001` (the default port for `react-scripts`).
 
 ## Additional commands
 
