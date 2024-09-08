@@ -15,14 +15,23 @@
    npm install
    ```
 
-4. **Start the Application**: Use the `start` script defined in `package.json` to start the application in development mode.
+4. **Create the `.env` File**: In the server folder, create a file named `.env` and add your credential information as follows:
+
+   ```bash
+   DB_URI=MongoDB URI
+   API_ENDPOINT="http://localhost:3000"
+   PORT=3000
+   OPENAI_API_KEY=Your OPENAI API KEY
+   ```
+
+5. **Start the Application**: Use the `start` script defined in `package.json` to start the application in development mode.
 
    ```bash
    cd server && node index.js
    cd client && npm start
    ```
 
-5. **Open the Application**: Once the application has started, open your web browser and navigate to `http://localhost:3001` (the default port for `react-scripts`).
+6. **Open the Application**: Once the application has started, open your web browser and navigate to `http://localhost:3001` (the default port for `react-scripts`).
 
 ## Additional commands
 
